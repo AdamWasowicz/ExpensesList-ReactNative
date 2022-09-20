@@ -1,19 +1,24 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View } from "react-native";
 import useManageExpenses from "./utils";
 import style from './style';
 import IconButton from "../../components/UI/IconButton";
 import appColorScheme from "../../constants/Colors";
 import Button from "../../components/UI/Button";
+import ExpenseForm from "../../components/ManageExpenses/ExpenseForm";
 
 
 const ManageExpensesScreen: React.FC = () => {
 
-    const { mode, expense, handleDelete, handleCancel, handleConfirm } = useManageExpenses();
+    const { 
+        mode, handleExpenseDelete, 
+        handleCancel, handleConfirm,
+    } = useManageExpenses();
 
 
     return (
         <View style={style.root}>
+            <ExpenseForm/>
             <View style={style.buttonsContainer}>
                 <Button customStyle={style.button} mode='flat' onPress={handleCancel}>
                     Cancel
@@ -33,7 +38,7 @@ const ManageExpensesScreen: React.FC = () => {
                             name='trash' 
                             color={appColorScheme.error._500} 
                             size={32} 
-                            onPress={handleDelete}
+                            onPress={handleExpenseDelete}
                         />
                     </View>
             }

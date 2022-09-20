@@ -9,6 +9,8 @@ import AllExpensesScreen from "../../screens/AllExpensesScreen";
 import appColorScheme from "../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import IconButton from "../UI/IconButton";
+import { useDispatch } from "react-redux";
+import { clearExpenseFormState } from "../../redux/features/expenseForm-slice";
 
 
 const Stack = createNativeStackNavigator<RootStackNavigationParams>();
@@ -49,7 +51,7 @@ const Navigation: React.FC = () => {
 const ExpensesOverview: React.FC = () => {
 
     const rootNavigation = useNavigation<NativeStackNavigationProp<RootStackNavigationParams>>();
-
+    const dispatch = useDispatch();
 
     return (
         <BottomTabs.Navigator
@@ -63,7 +65,10 @@ const ExpensesOverview: React.FC = () => {
                         name='add'
                         size={40}
                         color={tintColor!}
-                        onPress={() => rootNavigation.navigate('ManageExpenses', {mode: 'add'})}
+                        onPress={() => { 
+                            dispatch(clearExpenseFormState());
+                            rootNavigation.navigate('ManageExpenses', {mode: 'add'})
+                        }}
                     />
                 
             }}

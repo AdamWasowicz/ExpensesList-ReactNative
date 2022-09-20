@@ -3,6 +3,7 @@ import { enableMapSet } from 'immer';
 
 //Reducers
 import expensesReducer from './features/expenses-slice';
+import expenseFormReducer from './features/expenseForm-slice';
 
 enableMapSet();
 
@@ -10,6 +11,7 @@ enableMapSet();
 export const store = configureStore({
     reducer: {
         expenses: expensesReducer,
+        expenseForm: expenseFormReducer,
     }
 })
 

@@ -12,7 +12,7 @@ const ExpensesSummary: React.FC<{expenses: Expense[], periodName: expensesPeriod
 
     return (
         <View style={style.root}>
-            <Text style={style.period}>Last 8 days</Text>
+            <Text style={style.period}>Last {props.periodName}</Text>
             <Text style={style.sum}>${expensesSum.toFixed(2)}</Text>
         </View>
     )
